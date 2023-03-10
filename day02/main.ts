@@ -19,3 +19,10 @@ const getProject = (props: { id: number, name: string, image: string }) => {
 
 }
 getProject(project)
+
+/*
+    Định nghĩa kiểu dữ liệu cho mảng projectList
+    Mảng này chứa 2 Object 
+    Mỗi Object chứa 2 thuộc tính là id và name
+    
+*/ 
