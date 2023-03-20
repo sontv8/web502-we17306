@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ProductManagementPage = () => {
     return (
         <div>
-            <button>Add New Product</button>
+            <button><Link to={'/admin/products/add'}>Add New Product</Link></button>
             <table>
                 <thead>
                     <tr>
