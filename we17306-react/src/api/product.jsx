@@ -6,8 +6,8 @@ const getAllProduct = () => {
 const getOneProduct = (id) => {
     return instance.get('/products/' + id);
 }
-const addProduct = () => {
-    return instance.post('/products');
+const addProduct = (product) => {
+    return instance.post('/products', product);
 }
 const deleteProduct = (id) => {
     return instance.delete('/products/' + id);

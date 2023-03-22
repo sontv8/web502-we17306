@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage'
 import ProductsPage from './pages/Products'
 import React, { useEffect, useState } from 'react'
 import ProductDetailPage from './pages/ProductDetail'
-import { deleteProduct, getAllProduct } from './api/product'
+import { addProduct, deleteProduct, getAllProduct } from './api/product'
 import Dashboard from './pages/admin/Dashboard'
 import ProductManagementPage from './pages/admin/ProductManagement'
 import AddProductPage from './pages/admin/AddProduct'
@@ -21,7 +21,7 @@ function App() {
     deleteProduct(id).then(() => setProduct(products.filter((item) => item.id !== id)))
   }
   const onHandleAdd = (product) => {
-    setProduct([...products, product])
+    addProduct(product)
   }
   const onHandleUpdate = (product) => { }
   return (
@@ -32,7 +32,7 @@ function App() {
         <Route path='/products/:id' element={<ProductDetailPage />} />
         <Route path='/admin' element={<Dashboard />} />
         <Route path='/admin/products' element={<ProductManagementPage />} />
-        <Route path='/admin/products/add' element={<AddProductPage />} />
+        <Route path='/admin/products/add' element={<AddProductPage onAdd={onHandleAdd} />} />
       </Routes>
     </div>
   )
