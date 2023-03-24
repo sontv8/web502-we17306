@@ -4,10 +4,11 @@ import HomePage from './pages/HomePage'
 import ProductsPage from './pages/Products'
 import React, { useEffect, useState } from 'react'
 import ProductDetailPage from './pages/ProductDetail'
-import { addProduct, deleteProduct, getAllProduct } from './api/product'
+import { addProduct, deleteProduct, getAllProduct, updateProduct } from './api/product'
 import Dashboard from './pages/admin/Dashboard'
 import ProductManagementPage from './pages/admin/ProductManagement'
 import AddProductPage from './pages/admin/AddProduct'
+import UpdateProductPage from './pages/admin/UpdateProduct'
 
 function App() {
   const [products, setProduct] = useState([])
@@ -23,7 +24,9 @@ function App() {
   const onHandleAdd = (product) => {
     addProduct(product).then(() => setProduct([...products, product]))
   }
-  const onHandleUpdate = (product) => { }
+  const onHandleUpdate = (product) => {
+    updateProduct(product).then(() => setProduct(products.map((item) => item.id == product.id ? product : item)))
+  }
   return (
     <div className="App">
       <Routes>
@@ -33,6 +36,7 @@ function App() {
         <Route path='/admin' element={<Dashboard />} />
         <Route path='/admin/products' element={<ProductManagementPage products={products} onRemove={onHandleRemove} />} />
         <Route path='/admin/products/add' element={<AddProductPage onAdd={onHandleAdd} />} />
+        <Route path='/admin/products/:id/update' element={<UpdateProductPage onUpdate={onHandleUpdate} products={products} />} />
       </Routes>
     </div>
   )
