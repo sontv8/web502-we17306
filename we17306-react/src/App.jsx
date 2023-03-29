@@ -9,6 +9,8 @@ import Dashboard from './pages/admin/Dashboard'
 import ProductManagementPage from './pages/admin/ProductManagement'
 import AddProductPage from './pages/admin/AddProduct'
 import UpdateProductPage from './pages/admin/UpdateProduct'
+import WebsiteLayout from './pages/layouts/WebsiteLayout'
+import AdminLayout from './pages/layouts/AdminLayout'
 
 function App() {
   const [products, setProduct] = useState([])
@@ -30,13 +32,30 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<HomePage />} />
+        <Route path='/' element={<WebsiteLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path='products' >
+            <Route index element={<ProductsPage products={products} onRemove={onHandleRemove} />} />
+            <Route path=':id' element={<ProductDetailPage />} />
+          </Route>
+        </Route>
+
+        <Route path='/admin' element={<AdminLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path='products' >
+            <Route index element={<ProductManagementPage products={products} onRemove={onHandleRemove} />} />
+            <Route path='add' element={<AddProductPage onAdd={onHandleAdd} />} />
+            <Route path=':id/update' element={<UpdateProductPage onUpdate={onHandleUpdate} products={products} />} />
+          </Route>
+        </Route>
+
+        {/* <Route path='/' element={<HomePage />} />
         <Route path='/products' element={<ProductsPage products={products} onRemove={onHandleRemove} />} />
         <Route path='/products/:id' element={<ProductDetailPage />} />
         <Route path='/admin' element={<Dashboard />} />
         <Route path='/admin/products' element={<ProductManagementPage products={products} onRemove={onHandleRemove} />} />
         <Route path='/admin/products/add' element={<AddProductPage onAdd={onHandleAdd} />} />
-        <Route path='/admin/products/:id/update' element={<UpdateProductPage onUpdate={onHandleUpdate} products={products} />} />
+        <Route path='/admin/products/:id/update' element={<UpdateProductPage onUpdate={onHandleUpdate} products={products} />} /> */}
       </Routes>
     </div>
   )
