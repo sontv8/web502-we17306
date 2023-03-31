@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { IProduct } from '../../types/product'
 interface IFormInput {
+    id: number,
     name: string,
     price: number
 }
@@ -9,8 +10,8 @@ interface IProps {
     onAdd: (product: IProduct) => void
 }
 const AddProductPage = (props: IProps) => {
-    const { register, handleSubmit } = useForm()
-    const onHandleSubmit: SubmitHandler<IFormInput> = (data: IProduct) => {
+    const { register, handleSubmit } = useForm<IFormInput>()
+    const onHandleSubmit: SubmitHandler<IFormInput> = (data) => {
         props.onAdd(data);
     }
     return (

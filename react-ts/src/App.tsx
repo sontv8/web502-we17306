@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { addProduct, deleteProduct, getAllProduct } from './api/product'
+import { addProduct, deleteProduct, getAllProduct, updateProduct } from './api/product'
 import AddProductPage from './pages/admin/AddProduct'
+import UpdateProductPage from './pages/admin/UpdateProduct'
 import HomePage from './pages/HomePage'
 import ProductsPage from './pages/Product'
 import ProductDetailPage from './pages/ProductDetail'
@@ -18,6 +19,9 @@ function App() {
   const onHandleAdd = (product) => {
     addProduct(product)
   }
+  const onHandleUpdate = (product) => {
+    updateProduct(product)
+  }
   return (
     <div className="App">
       <Routes>
@@ -32,6 +36,7 @@ function App() {
         <Route path='/admin'>
           <Route path='products'>
             <Route path='add' element={<AddProductPage onAdd={onHandleAdd} />} />
+            <Route path=':id/update' element={<UpdateProductPage onUpdate={onHandleUpdate} products={products} />} />
           </Route>
         </Route>
       </Routes>
