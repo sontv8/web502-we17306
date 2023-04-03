@@ -19,6 +19,11 @@
       "name": "abcd updated",
       "price": "10000000",
       "id": 4
+    },
+    {
+      "name": "new product 5",
+      "price": "1234",
+      "id": 5
     }
   ]
 }
