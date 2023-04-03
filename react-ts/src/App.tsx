@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { addProduct, deleteProduct, getAllProduct, updateProduct } from './api/product'
 import AddProductPage from './pages/admin/AddProduct'
+import ProductManagementPage from './pages/admin/ProductManagement'
 import UpdateProductPage from './pages/admin/UpdateProduct'
 import HomePage from './pages/HomePage'
 import ProductsPage from './pages/Product'
@@ -35,6 +36,7 @@ function App() {
         </Route>
         <Route path='/admin'>
           <Route path='products'>
+            <Route index element={<ProductManagementPage products={products} onRemove={onHandleRemove} />} />
             <Route path='add' element={<AddProductPage onAdd={onHandleAdd} />} />
             <Route path=':id/update' element={<UpdateProductPage onUpdate={onHandleUpdate} products={products} />} />
           </Route>

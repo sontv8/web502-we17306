@@ -14,16 +14,6 @@
       "id": 3,
       "name": "Product 3",
       "price": 100
-    },
-    {
-      "name": "abcd updated",
-      "price": "10000000",
-      "id": 4
-    },
-    {
-      "name": "new product 5",
-      "price": "1234",
-      "id": 5
     }
   ]
 }
