@@ -3,7 +3,8 @@
     {
       "id": 1,
       "name": "Product 1",
-      "price": 100
+      "price": 100,
+      "categoryId": 1
     },
     {
       "id": 2,
@@ -14,6 +15,16 @@
       "id": 3,
       "name": "Product 3",
       "price": 100
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Category 1"
+    },
+    {
+      "id": 2,
+      "name": "Category 2"
     }
   ]
 }
